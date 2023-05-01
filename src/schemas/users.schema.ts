@@ -1,19 +1,19 @@
-import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
-export type DemoDocument = Demo & Document;
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose'
+import { Document } from 'mongoose'
+export type UsersDocument = Users & Document
 @Schema()
-export class Demo {
+export class Users {
   @Prop({ required: true })
-  property_1: string;
+  property_1: string
 
   @Prop({ required: true })
-  property_2: number;
+  property_2: number
 
   @Prop()
-  property_3: string;
+  property_3: string
 
   @Prop({ required: true })
-  property_4: boolean;
+  property_4: boolean
 }
 
-export const DemoSchema = SchemaFactory.createForClass(Demo);
+export const usersSchema = SchemaFactory.createForClass(Users)
