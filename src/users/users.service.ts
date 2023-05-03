@@ -10,7 +10,7 @@ export class UsersService {
   constructor(private userModel: UserModel) {}
 
   getUserInfo() {
-    return this.userModel.getUserInfo()
+    return this.userModel.find({})
   }
 
   async registerUser({ username, password, email }: Users): Promise<any> {
@@ -20,6 +20,6 @@ export class UsersService {
       password: hash,
       email,
     }
-    return this.userModel.saveUser(prepareUserObj)
+    return this.userModel.save(prepareUserObj)
   }
 }
