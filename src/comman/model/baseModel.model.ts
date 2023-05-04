@@ -1,6 +1,6 @@
 import { BaseModelInterface } from '../interfaces/baseModel.interface'
 
-export class BaseModel implements BaseModelInterface {
+export abstract class BaseModel implements BaseModelInterface {
   private readonly currentModel: any
   constructor(modelRef) {
     this.currentModel = modelRef
@@ -16,5 +16,9 @@ export class BaseModel implements BaseModelInterface {
   save(data) {
     const response = new this.currentModel(data)
     return response.save()
+  }
+
+  findOne(condition) {
+    return this.currentModel.findOne(condition)
   }
 }
