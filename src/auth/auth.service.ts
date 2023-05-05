@@ -20,7 +20,11 @@ export class AuthService {
     if (!comparePassRes) {
       throw new UnauthorizedException()
     }
-    const payload = { username: user.username, sub: user.userId }
+    const payload = {
+      username: user.username,
+      sub: user.userId,
+      email: user.email,
+    }
     return {
       access_token: `Bearer ${await this.jwtService.signAsync(payload)}`,
     }

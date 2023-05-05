@@ -3,6 +3,7 @@ import {
   Controller,
   Get,
   Post,
+  Request,
   UseFilters,
   UseGuards,
 } from '@nestjs/common'
@@ -18,13 +19,19 @@ export class UsersController {
 
   @UseGuards(AuthGuard)
   @Get()
-  getUserInfo() {
-    return this.usersService.getUserInfo()
+  getUserList() {
+    return this.usersService.getUserList()
   }
 
   @UseFilters(MongoExceptionFilter)
   @Post('register')
   registerUser(@Body() body: UserDto) {
     return this.usersService.registerUser(body)
+  }
+
+  @UseGuards(AuthGuard)
+  @Get('profile')
+  getUserInfo(@Request() req: any) {
+    return req.user
   }
 }
