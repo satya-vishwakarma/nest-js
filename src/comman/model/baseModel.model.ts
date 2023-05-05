@@ -2,23 +2,23 @@ import { BaseModelInterface } from '../interfaces/baseModel.interface'
 
 export abstract class BaseModel implements BaseModelInterface {
   private readonly currentModel: any
-  constructor(modelRef) {
+  constructor(modelRef: any) {
     this.currentModel = modelRef
   }
-  find(where, projection = {}) {
+  find(where: object, projection: object = {}) {
     return this.currentModel.find(where, projection)
   }
 
-  findById(id) {
+  findById(id: string) {
     return this.currentModel.findById(id)
   }
 
-  save(data) {
+  save(data: object) {
     const response = new this.currentModel(data)
     return response.save()
   }
 
-  findOne(condition) {
+  findOne(condition: object) {
     return this.currentModel.findOne(condition)
   }
 }
