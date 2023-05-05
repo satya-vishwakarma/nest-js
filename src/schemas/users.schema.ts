@@ -12,6 +12,9 @@ export class Users {
   @Prop({ required: true })
   password: string
 
+  @Prop({ required: true })
+  role: string
+
   @Prop({ required: true, default: true })
   isActive: boolean
 
@@ -22,7 +25,7 @@ export class Users {
   updatedAt: Date
 
   @Prop({ required: true, default: false })
-  isDeleted: boolean
+  isDelete: boolean
 }
 
 export const usersSchema = SchemaFactory.createForClass(Users)

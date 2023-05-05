@@ -38,5 +38,8 @@ export class UserDto {
   updatedAt: Date
 
   @IsOptional()
-  isDeleted: boolean
+  isDelete: boolean
+
+  @IsOptional()
+  role: string
 }

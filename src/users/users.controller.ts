@@ -4,12 +4,13 @@ import {
   Get,
   Post,
   UseFilters,
-  UseGuards
-} from '@nestjs/common';
-import { UsersService } from './users.service';
-import { UserDto } from './dto/users.dto';
-import { MongoExceptionFilter } from 'src/comman/filters/mongo-exception.filter';
-import { AuthGuard } from 'src/auth/auth.guard';
+  UseGuards,
+} from '@nestjs/common'
+import { UsersService } from './users.service'
+
+import { AuthGuard } from '../auth/auth.guard'
+import { MongoExceptionFilter } from '../comman/filters/mongo-exception.filter'
+import { UserDto } from './dto/users.dto'
 
 @Controller('users')
 export class UsersController {
@@ -18,12 +19,12 @@ export class UsersController {
   @UseGuards(AuthGuard)
   @Get()
   getUserInfo() {
-    return this.usersService.getUserInfo();
+    return this.usersService.getUserInfo()
   }
 
   @UseFilters(MongoExceptionFilter)
   @Post('register')
   registerUser(@Body() body: UserDto) {
-    return this.usersService.registerUser(body);
+    return this.usersService.registerUser(body)
   }
 }
