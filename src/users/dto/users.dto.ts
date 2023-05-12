@@ -9,17 +9,27 @@ import {
 } from 'class-validator'
 
 import { ERRORMESSAGE } from './../../comman/constants/'
+import { ApiProperty } from '@nestjs/swagger'
 
 const { PASSOWRDVALIDATION } = ERRORMESSAGE
 
 export class UserDto {
+  @ApiProperty({ description: 'user name' })
   @IsNotEmpty()
   username: string
 
+  @ApiProperty({ description: 'Email' })
+  @ApiProperty()
   @IsNotEmpty()
   @IsEmail()
   email: string
 
+  @ApiProperty({
+    description:
+      'password should be minimum 8 characters at least one letter and one number',
+    minimum: 1,
+    maximum: 20,
+  })
   @IsString()
   @MinLength(8)
   @MaxLength(20)

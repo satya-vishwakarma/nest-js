@@ -12,6 +12,7 @@ import { UsersService } from './users.service'
 import { AuthGuard } from '../auth/auth.guard'
 import { MongoExceptionFilter } from '../comman/filters/mongo-exception.filter'
 import { UserDto } from './dto/users.dto'
+import { ApiBody, ApiParam, ApiProperty } from '@nestjs/swagger'
 
 @Controller('users')
 export class UsersController {

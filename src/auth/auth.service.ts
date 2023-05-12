@@ -12,10 +12,10 @@ export class AuthService {
   async signIn(username, pass) {
     const user = await this.usersService.findOne({ username })
 
-    const comparePassRes = await this.usersService.comparePassword({
-      requestPassword: pass,
-      hashPassword: user?.password,
-    })
+    const comparePassRes = await this.usersService.comparePassword(
+      pass,
+      user?.password,
+    )
 
     if (!comparePassRes) {
       throw new UnauthorizedException()
