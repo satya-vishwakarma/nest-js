@@ -14,7 +14,7 @@ export class AuthService {
 
     const comparePassRes = await this.usersService.comparePassword({
       requestPassword: pass,
-      hashPassword: user?.password,
+      hashPassword: user.password,
     })
 
     if (!comparePassRes) {

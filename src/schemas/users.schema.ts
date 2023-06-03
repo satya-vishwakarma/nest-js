@@ -12,7 +12,7 @@ export class Users {
   @Prop({ required: true })
   password: string
 
-  @Prop({ required: true })
+  @Prop({ required: false, default: '1' })
   role: string
 
   @Prop({ required: true, default: true })

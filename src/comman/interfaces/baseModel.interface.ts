@@ -1,6 +1,6 @@
 export interface BaseModelInterface {
-  find: (id) => void;
-  findById: (id) => void;
-  save: (id) => void;
-  findOne: (id) => void;
+  find: (id) => Promise<any>
+  findById: (id) => Promise<any>
+  save: (id) => Promise<any>
+  findOne: (id) => Promise<any>
 }

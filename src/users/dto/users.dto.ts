@@ -20,8 +20,8 @@ export class UserDto {
   @IsEmail()
   email: string
 
-  @IsString()
   @MinLength(8)
+  @IsNotEmpty()
   @MaxLength(20)
   @Matches(/^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/, {
     message: PASSOWRDVALIDATION,

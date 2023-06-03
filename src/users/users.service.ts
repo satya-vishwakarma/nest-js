@@ -28,7 +28,7 @@ export class UsersService {
     return this.userModel.findOne(condition)
   }
 
-  comparePassword(requestPassword: string, hashPassword: string) {
+  comparePassword({ requestPassword, hashPassword }) {
     return new Promise((resolve) => {
       return bcrypt.compare(requestPassword, hashPassword, function (err, res) {
         if (err) {
