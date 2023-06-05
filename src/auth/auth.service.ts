@@ -11,6 +11,7 @@ export class AuthService {
 
   async signIn(username, pass) {
     const user = await this.usersService.findOne({ username })
+    console.log(user, '--------------')
 
     const comparePassRes = await this.usersService.comparePassword({
       requestPassword: pass,
@@ -24,6 +25,7 @@ export class AuthService {
       username: user.username,
       sub: user.userId,
       email: user.email,
+      _id: user._id,
     }
     return {
       access_token: `Bearer ${await this.jwtService.signAsync(payload)}`,

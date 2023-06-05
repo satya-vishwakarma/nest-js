@@ -21,7 +21,11 @@ export class UsersService {
       password: hash,
       email,
     }
-    return this.userModel.save(prepareUserObj)
+    await this.userModel.save(prepareUserObj)
+    return this.userModel.find(
+      { email: email },
+      { password: 0, isActive: 0, isDelete: 0, __v: 0 },
+    )
   }
 
   findOne(condition) {
