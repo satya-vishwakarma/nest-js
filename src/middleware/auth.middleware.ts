@@ -8,7 +8,6 @@ export class AuthMiddleware implements NestMiddleware {
 
   async use(req: Request, resp: Response, next: NextFunction) {
     try {
-      Logger.log('MIddleware')
       if (!req?.headers['authorization']) {
         resp.status(401).send({ code: 401, message: 'UnAutorized Access' })
         return
