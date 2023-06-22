@@ -11,7 +11,6 @@ export class AuthService {
 
   async signIn(username, pass) {
     const user = await this.usersService.findOne({ username })
-    console.log(user, '--------------')
 
     const comparePassRes = await this.usersService.comparePassword({
       requestPassword: pass,

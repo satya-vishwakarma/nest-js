@@ -3,10 +3,11 @@ import { AppController } from './app.controller'
 import { AppService } from './app.service'
 import { MongooseModule } from '@nestjs/mongoose'
 import { UsersModule } from './users/users.module'
-import { Module } from '@nestjs/common'
+import { MiddlewareConsumer, Module } from '@nestjs/common'
 import { AuthModule } from './auth/auth.module'
 import { RoleManagementModule } from './permissions/role-management/role-management.module'
 import { PermissionModule } from './permissions/permission/permission.module'
+import { excludeRoutes } from './routes/excludeRoutes'
 
 @Module({
   imports: [
@@ -21,4 +22,8 @@ import { PermissionModule } from './permissions/permission/permission.module'
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule {
+  configure(consumer: MiddlewareConsumer) {
+    excludeRoutes(consumer)
+  }
+}
