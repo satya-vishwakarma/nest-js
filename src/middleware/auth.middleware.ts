@@ -9,7 +9,7 @@ export class AuthMiddleware implements NestMiddleware {
   async use(req: Request, resp: Response, next: NextFunction) {
     try {
       if (!req?.headers['authorization']) {
-        resp.status(401).send({ code: 401, message: 'UnAutorized Access' })
+        resp.status(401).send({ code: 401, message: 'UnAuthorized Access' })
         return
       }
       const token = this.extractTokenFromHeader(req)
@@ -20,7 +20,7 @@ export class AuthMiddleware implements NestMiddleware {
       } else {
         return resp
           .status(401)
-          .send({ code: 401, message: 'UnAutorized Access' })
+          .send({ code: 401, message: 'UnAuthorized Access' })
       }
     } catch (error) {
       resp.status(401).send({ code: 401, message: error.toString() })
