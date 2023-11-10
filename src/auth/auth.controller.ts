@@ -6,20 +6,20 @@ import { loginDto } from './dto/login.dto'
 @ApiTags('Auth')
 @Controller('auth')
 export class AuthController {
-  constructor(private authService: AuthService) {}
+	constructor(private authService: AuthService) { }
 
-  @HttpCode(HttpStatus.OK)
-  @Post('login')
-  @ApiOperation({
-    summary: 'Login',
-  })
-  @ApiResponse({ status: 403, description: 'Forbidden.' })
-  @ApiResponse({
-    status: 200,
-    description: '',
-    type: Object,
-  })
-  signIn(@Body() signInDto: loginDto) {
-    return this.authService.signIn(signInDto.username, signInDto.password)
-  }
+	@HttpCode(HttpStatus.OK)
+	@Post('login')
+	@ApiOperation({
+		summary: 'Login',
+	})
+	@ApiResponse({ status: 403, description: 'Forbidden.' })
+	@ApiResponse({
+		status: 200,
+		description: '',
+		type: Object,
+	})
+	signIn(@Body() signInDto: loginDto) {
+		return this.authService.signIn(signInDto.username, signInDto.password)
+	}
 }
